@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Vite App</title>
+      <link rel="stylesheet" href="style.css" />
+   </head>
+   <body class="h-screen w-screen overflow-hidden">
+      <div id="app" class="h-full w-full relative">
+         <div id="ui">
+            <p
+               class="absolute top-[1vh] left-[5%] flex flex-col text-amber-100 select-none"
+            >
+               Tap/Click around to move
+            </p>
+            <div id="textbox-container" class="hidden">
+               <div
+                  class="absolute right-[10%] left-[10%] bottom-[2vh] min-h-[10vh] bg-white rounded-sm outline-1 p-[1rem] flex flex-col flex-wrap justify-center items-start [word-spacing:0.2rem] drop-shadow-sm"
+               >
+                  <p id="dialogue" class="m-0 select-none"></p>
+                  <div class="btn-container self-end">
+                     <button id="close" class="border-none rounded-sm p-[1rem]">
+                        Close
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <canvas id="game"></canvas>
+      </div>
+      <script type="module" src="src/main.js"></script>
+   </body>
+</html>

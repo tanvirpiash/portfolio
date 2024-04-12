@@ -1,0 +1,21 @@
+{
+   "name": "portfolio",
+   "private": true,
+   "version": "0.0.0",
+   "type": "module",
+   "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview"
+   },
+   "packageManager": "pnpm@8.15.6",
+   "devDependencies": {
+      "terser": "^5.30.3",
+      "vite": "^5.2.0"
+   },
+   "dependencies": {
+      "@tailwindcss/vite": "4.0.0-alpha.14",
+      "kaboom": "^3000.1.17",
+      "tailwindcss": "4.0.0-alpha.14"
+   }
+}
