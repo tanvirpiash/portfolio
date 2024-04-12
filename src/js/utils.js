@@ -1,18 +1,26 @@
-export const displayDialogue = (text, onDisplayEnd) => {
+import { marked } from 'marked';
+export const displayDialogue = async (text, onDisplayEnd) => {
    const dialogueUI = document.getElementById('textbox-container');
    const dialogue = document.getElementById('dialogue');
    dialogueUI.classList.toggle('hidden');
-   let index = 0;
-   let currentText = '';
-   const intervalRef = setInterval(() => {
-      if (index < text.length) {
-         currentText += text[index];
-         dialogue.innerHTML = currentText;
-         index++;
-         return;
-      }
-      clearInterval(intervalRef);
-   }, 5);
+   let intervalRef;
+   try {
+      const contents = await (await fetch(`./content/${text}.md`)).text();
+      const html = marked.parse(contents);
+      let index = 0;
+      let currentText = '';
+      intervalRef = setInterval(() => {
+         if (index < html.length) {
+            currentText += html[index];
+            dialogue.innerHTML = currentText;
+            index++;
+            return;
+         }
+         clearInterval(intervalRef);
+      }, 50);
+   } catch (error) {
+      console.log(error);
+   }
 
    const closeBtn = document.getElementById('close');
 

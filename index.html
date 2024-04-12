@@ -5,7 +5,7 @@
       <link rel="icon" type="image/svg+xml" href="/vite.svg" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Vite App</title>
-      <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="./src/styles/style.css" />
    </head>
    <body class="h-screen w-screen overflow-hidden">
       <div id="app" class="h-full w-full relative">
@@ -17,19 +17,21 @@
             </p>
             <div id="textbox-container" class="hidden">
                <div
-                  class="absolute right-[10%] left-[10%] bottom-[2vh] min-h-[10vh] bg-white rounded-sm outline-1 p-[1rem] flex flex-col flex-wrap justify-center items-start [word-spacing:0.2rem] drop-shadow-sm"
+                  class="absolute flex flex-col w-[80vw] right-[10%] left-[10%] bottom-[2vh] min-h-[10vh] bg-white rounded-sm outline-1 p-[1rem] [word-spacing:0.2rem] drop-shadow-sm select-none max-h-[50vh] overflow-y-auto"
                >
-                  <p id="dialogue" class="m-0 select-none"></p>
-                  <div class="btn-container self-end">
-                     <button id="close" class="border-none rounded-sm p-[1rem]">
-                        Close
-                     </button>
-                  </div>
+                  <p id="dialogue" class=""></p>
+                  <button
+                     id="close"
+                     class="sticky bottom-0 border-none rounded-sm p-[1rem] flex justify-end items-center"
+                  >
+                     Close
+                  </button>
+                  <div class=""></div>
                </div>
             </div>
          </div>
          <canvas id="game"></canvas>
       </div>
-      <script type="module" src="src/main.js"></script>
+      <script type="module" src="./src/js/main.js"></script>
    </body>
 </html>
