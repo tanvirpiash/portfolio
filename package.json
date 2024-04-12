@@ -10,13 +10,13 @@
    },
    "packageManager": "pnpm@8.15.6",
    "devDependencies": {
-      "terser": "^5.30.3",
-      "vite": "^5.2.0"
+      "terser": "~5.30.3",
+      "vite": "~5.2.0"
    },
    "dependencies": {
       "@tailwindcss/vite": "4.0.0-alpha.14",
-      "kaboom": "^3000.1.17",
-      "marked": "^12.0.1",
+      "kaboom": "~3000.1.17",
+      "marked": "~12.0.1",
       "tailwindcss": "4.0.0-alpha.14"
    }
 }

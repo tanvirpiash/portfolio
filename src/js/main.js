@@ -2,7 +2,7 @@ import { scaleFactor } from './constants';
 import { k } from './kaboomCtx';
 import { displayDialogue, setCamScale } from './utils';
 
-k.loadSprite('spritesheet', './spritesheet.png', {
+k.loadSprite('spritesheet', './map/spritesheet.png', {
    sliceX: 39,
    sliceY: 31,
    anims: {
@@ -15,14 +15,13 @@ k.loadSprite('spritesheet', './spritesheet.png', {
    },
 });
 
-k.loadSprite('map', './map.png');
+k.loadSprite('map', './map/map.png');
 
 k.setBackground(k.Color.fromHex('#311047'));
 
 k.scene('main', async () => {
-   const mapData = await (await fetch('./map.json')).json();
+   const mapData = await (await fetch('./map/map.json')).json();
    const layers = mapData.layers;
-
    const map = k.make([k.sprite('map'), k.pos(0), k.scale(scaleFactor)]);
    k.add(map);
 
@@ -36,7 +35,7 @@ k.scene('main', async () => {
       k.pos(),
       k.scale(scaleFactor),
       {
-         speed: 200,
+         speed: 160,
          direction: 'down',
          isInDialogue: false,
       },
@@ -88,6 +87,7 @@ k.scene('main', async () => {
    k.onUpdate(() => {
       k.camPos(player.worldPos().x, player.worldPos().y - 100);
    });
+
    k.onMouseDown((mouseBtn) => {
       if (mouseBtn !== 'left' || player.isInDialogue) {
          return;
@@ -100,7 +100,7 @@ k.scene('main', async () => {
       if (
          mouseAngle > lowerBound &&
          mouseAngle < upperBound &&
-         player.curAnim !== 'walk-up'
+         player.curAnim() !== 'walk-up'
       ) {
          player.play('walk-up');
          player.direction = 'up';
@@ -109,7 +109,7 @@ k.scene('main', async () => {
       if (
          mouseAngle < -lowerBound &&
          mouseAngle > -upperBound &&
-         player.curAnim !== 'walk-down'
+         player.curAnim() !== 'walk-down'
       ) {
          player.play('walk-down');
          player.direction = 'down';
@@ -117,7 +117,7 @@ k.scene('main', async () => {
       }
       if (Math.abs(mouseAngle) > upperBound) {
          player.flipX = false;
-         if (player.curAnim !== 'walk-side') {
+         if (player.curAnim() !== 'walk-side') {
             player.play('walk-side');
             player.direction = 'right';
             return;
@@ -125,7 +125,7 @@ k.scene('main', async () => {
       }
       if (Math.abs(mouseAngle) < lowerBound) {
          player.flipX = true;
-         if (player.curAnim !== 'walk-side') {
+         if (player.curAnim() !== 'walk-side') {
             player.play('walk-side');
             player.direction = 'left';
             return;
@@ -144,7 +144,6 @@ k.scene('main', async () => {
       player.play('idle-side');
       return;
    });
-   k.onKeyDown();
 });
 
 k.go('main');

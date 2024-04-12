@@ -17,7 +17,7 @@ export const displayDialogue = async (text, onDisplayEnd) => {
             return;
          }
          clearInterval(intervalRef);
-      }, 50);
+      }, 10);
    } catch (error) {
       console.log(error);
    }
